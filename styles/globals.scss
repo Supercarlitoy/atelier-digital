@@ -1,0 +1,205 @@
+
+// Design System - CSS Variables
+:root {
+  // Quarried Stone Palette
+  --color-background: #191919;
+  --color-text: #A3A3A3;
+  --color-heading: #E5E5E5;
+  --color-primary: #C2A878;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  
+  // Semantic Colors
+  --color-surface: #222222;
+  --color-border: #333333;
+  --color-muted: #666666;
+  
+  // Fluid Typography Scale (Utopia-style clamp functions)
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+  --text-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem);
+  --text-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  --text-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --text-6xl: clamp(4rem, 3.2rem + 4vw, 5.5rem);
+  
+  // Fluid Spacing Scale
+  --space-xs: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-sm: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+  --space-base: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --space-xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --space-2xl: clamp(3rem, 2.4rem + 3vw, 4rem);
+  --space-3xl: clamp(4rem, 3.2rem + 4vw, 6rem);
+  --space-4xl: clamp(6rem, 4.8rem + 6vw, 8rem);
+  --space-5xl: clamp(8rem, 6.4rem + 8vw, 12rem);
+  
+  // Layout
+  --container-max: 1200px;
+  --container-padding: var(--space-base);
+  
+  // Transitions
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease;
+  --transition-fast: 0.15s ease;
+  
+  // Shadows & Effects
+  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  
+  // Typography
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  // Line Heights
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.8;
+}
+
+// Reset & Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-weight: var(--font-weight-normal);
+}
+
+// Typography Utilities
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-heading);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-sm);
+}
+
+h1 { font-size: var(--text-6xl); }
+h2 { font-size: var(--text-5xl); }
+h3 { font-size: var(--text-4xl); }
+h4 { font-size: var(--text-3xl); }
+h5 { font-size: var(--text-2xl); }
+h6 { font-size: var(--text-xl); }
+
+p {
+  margin-bottom: var(--space-base);
+  &:last-child { margin-bottom: 0; }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+  
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// Layout Utilities
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+.section {
+  padding: var(--space-4xl) 0;
+}
+
+// Component Base Classes
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-black);
+    padding: var(--space-base) var(--space-xl);
+    
+    &:hover {
+      background-color: var(--color-heading);
+      transform: translateY(-1px);
+    }
+  }
+  
+  &--text {
+    background: transparent;
+    color: var(--color-heading);
+    padding: var(--space-sm) 0;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-primary);
+      transition: width var(--transition-base);
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+// Animations & Effects
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+// Responsive Utilities
+@media (max-width: 768px) {
+  .container {
+    --container-padding: var(--space-sm);
+  }
+  
+  .section {
+    padding: var(--space-3xl) 0;
+  }
+}
