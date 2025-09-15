@@ -5,15 +5,15 @@ import PageTransitionMount from '../../components/animations/PageTransitionMount
 import Testimonials from '../../components/common/testimonials';
 
 const team = [
-  { id: 't1', name: 'Sarah Chen', role: 'Creative Director', bio: 'Leads brand direction and design quality.', image: '/images/team/member-1.svg', skills: ['Branding', 'Art Direction', 'UX'], social: { linkedin: '#', dribbble: '#' } },
-  { id: 't2', name: 'Marcus Rodriguez', role: 'Lead Developer', bio: 'Architects modern web stacks and performance.', image: '/images/team/member-2.svg', skills: ['Next.js', 'Performance', 'APIs'], social: { github: '#', linkedin: '#' } },
-  { id: 't3', name: 'Elena Kowalski', role: 'UX Researcher', bio: 'Turns user insights into product improvements.', image: '/images/team/member-3.svg', skills: ['Research', 'Analytics', 'Workshops'], social: { linkedin: '#' } },
+  { id: 't1', name: 'Sarah Chen', role: 'Creative Director', bio: 'Leads brand direction and design quality.', image: '/images/team/founder.jpg', skills: ['Branding', 'Art Direction', 'UX'], social: { linkedin: '#', dribbble: '#' } },
+  { id: 't2', name: 'Marcus Rodriguez', role: 'Lead Developer', bio: 'Architects modern web stacks and performance.', image: '/images/team/office-1.jpg', skills: ['Next.js', 'Performance', 'APIs'], social: { github: '#', linkedin: '#' } },
+  { id: 't3', name: 'Elena Kowalski', role: 'UX Researcher', bio: 'Turns user insights into product improvements.', image: '/images/team/office-2.jpg', skills: ['Research', 'Analytics', 'Workshops'], social: { linkedin: '#' } },
 ];
 
 const testimonials = [
-  { id: 'ta1', name: 'Noah Sinclair', role: 'COO', company: 'Vertex Group', content: 'Atelier translated our vision into a premium digital experience with surgical precision.', image: '/images/avatars/avatar-1.svg', rating: 5 },
-  { id: 'ta2', name: 'Iris Nakamura', role: 'Head of Product', company: 'Nimbus Labs', content: 'Every interaction feels intentional. The craft shows in the details.', image: '/images/avatars/avatar-2.svg', rating: 5 },
-  { id: 'ta3', name: 'Jonah Patel', role: 'Marketing Director', company: 'Helios', content: 'Elegant, fast, and built right. A reliable foundation for our growth.', image: '/images/avatars/avatar-3.svg', rating: 4 },
+  { id: 'ta1', name: 'Noah Sinclair', role: 'COO', company: 'Vertex Group', content: 'Atelier translated our vision into a premium digital experience with surgical precision.', image: '/images/team/founder.jpg', rating: 5 },
+  { id: 'ta2', name: 'Iris Nakamura', role: 'Head of Product', company: 'Nimbus Labs', content: 'Every interaction feels intentional. The craft shows in the details.', image: '/images/team/founder.jpg', rating: 5 },
+  { id: 'ta3', name: 'Jonah Patel', role: 'Marketing Director', company: 'Helios', content: 'Elegant, fast, and built right. A reliable foundation for our growth.', image: '/images/team/founder.jpg', rating: 4 },
 ];
 
 export default function About() {

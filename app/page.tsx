@@ -22,7 +22,8 @@ const featuredServices = [
       'Responsive design system',
       'SEO optimization',
     ],
-    icon: '🏗️',
+    icon: '/images/services/web-design-icon.svg',
+    iconType: 'image' as const,
     price: '$299',
   },
   {
@@ -35,7 +36,8 @@ const featuredServices = [
       'API integration',
       'Cloud deployment',
     ],
-    icon: '⚙️',
+    icon: '/images/services/development-icon.svg',
+    iconType: 'image' as const,
   },
   {
     id: '3',
@@ -47,7 +49,8 @@ const featuredServices = [
       'Performance optimization',
       'Security assessment',
     ],
-    icon: '🎯',
+    icon: '/images/services/consulting-icon.svg',
+    iconType: 'image' as const,
     price: '$150/hr',
   },
 ];
@@ -60,14 +63,19 @@ const stats = [
 ];
 
 const testimonials = [
-  { id: 'tt1', name: 'Ava Carter', role: 'CEO', company: 'TechCorp', content: 'Their attention to detail elevated our brand.', image: '/images/avatars/avatar-1.svg', rating: 5 },
-  { id: 'tt2', name: 'Liam Patel', role: 'Founder', company: 'Innovation Labs', content: 'True digital craftsmanship across the board.', image: '/images/avatars/avatar-2.svg', rating: 5 },
-  { id: 'tt3', name: 'Maya Rossi', role: 'Design Director', company: 'Future Systems', content: 'Minimalism with purpose. Flawless execution.', image: '/images/avatars/avatar-3.svg', rating: 4 },
+  { id: 'tt1', name: 'Ava Carter', role: 'CEO', company: 'TechCorp', content: 'Their attention to detail elevated our brand.', image: '/images/team/founder.jpg', rating: 5 },
+  { id: 'tt2', name: 'Liam Patel', role: 'Founder', company: 'Innovation Labs', content: 'True digital craftsmanship across the board.', image: '/images/team/founder.jpg', rating: 5 },
+  { id: 'tt3', name: 'Maya Rossi', role: 'Design Director', company: 'Future Systems', content: 'Minimalism with purpose. Flawless execution.', image: '/images/team/founder.jpg', rating: 4 },
 ];
 
 export default function Home() {
   return (
-    <div className="hero">
+    <div className="hero" style={{
+      backgroundImage: 'url(/images/hero-bg.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }}>
       <PageTransitionMount type="architecturalReveal" />
       <AnimatedSection className="container" animation="fadeInUp">
         <h1 className="hero__title">

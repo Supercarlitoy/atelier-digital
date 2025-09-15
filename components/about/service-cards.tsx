@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Service {
   id: string;
@@ -8,6 +9,7 @@ interface Service {
   description: string;
   features: string[];
   icon: string;
+  iconType?: 'emoji' | 'image';
   price?: string;
 }
 
@@ -28,7 +30,17 @@ const ServiceCards = ({ services }: ServiceCardsProps) => {
           onMouseLeave={() => setHoveredCard(null)}
         >
           <div className="service-card__icon">
-            <span>{service.icon}</span>
+            {service.iconType === 'image' ? (
+              <Image
+                src={service.icon}
+                alt={`${service.title} icon`}
+                width={48}
+                height={48}
+                className="service-icon"
+              />
+            ) : (
+              <span>{service.icon}</span>
+            )}
           </div>
           <div className="service-card__content">
             <h3 className="service-card__title">{service.title}</h3>
