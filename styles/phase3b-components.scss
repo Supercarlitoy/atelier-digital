@@ -108,6 +108,7 @@
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  padding: var(--space-lg) 0;
 
   &.static {
     .marquee-content {
@@ -131,6 +132,45 @@
     padding: var(--space-m) 0;
     white-space: nowrap;
     will-change: transform;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    
+    // Ensure proper contrast for logos
+    img {
+      filter: brightness(0.8) contrast(1.2);
+      transition: filter var(--transition-base);
+      
+      &:hover {
+        filter: brightness(1) contrast(1);
+      }
+    }
+    
+    // Text items styling
+    span {
+      color: var(--color-heading);
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+    }
+  }
+  
+  // Light theme adjustments
+  :root.light &,
+  [data-theme="light"] & {
+    .marquee-item {
+      img {
+        filter: brightness(0.6) contrast(1.4);
+        
+        &:hover {
+          filter: brightness(0.4) contrast(1.6);
+        }
+      }
+    }
   }
 
   .marquee-item {

@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma generate && next build",
+    "use:prod-schema": "sh scripts/use-prod-schema.sh",
+    "restore:schema": "git checkout -- prisma/schema.prisma",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate"
