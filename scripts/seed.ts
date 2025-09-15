@@ -15,8 +15,7 @@ async function main() {
       create: {
         email: 'john@doe.com',
         password: hashedPassword,
-        firstName: 'John',
-        lastName: 'Doe',
+        name: 'John Doe',
       },
     });
 
@@ -31,8 +30,7 @@ async function main() {
       create: {
         email: 'admin@atelierdigital.com',
         password: adminHashedPassword,
-        firstName: 'Admin',
-        lastName: 'User',
+        name: 'Admin User',
       },
     });
 
