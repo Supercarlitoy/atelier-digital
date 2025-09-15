@@ -1,0 +1,530 @@
+/**
+ * Phase 3B Enhanced Interactive Components Styles
+ * Atelier Agency Theme - Premium Digital Product
+ */
+
+/* Token aliases to match existing design system */
+:root {
+  --color-accent: var(--color-primary);
+  /* Approximate RGB for #C2A878 (primary gold) */
+  --color-accent-rgb: 194, 168, 120;
+  /* From surface #222222 */
+  --color-surface-rgb: 34, 34, 34;
+  /* Map spacing */
+  --space-m: var(--space-base);
+  --space-l: var(--space-lg);
+  /* Radius alias */
+  --radius-lg: 0.75rem;
+  /* Type scale aliases */
+  --step-0: var(--text-base);
+  --step--1: var(--text-sm);
+  --step--2: var(--text-xs);
+  /* Text muted alias */
+  --color-text-muted: var(--color-muted);
+  /* Additional tokens for extended components */
+  --color-surface-elevated: #252525;
+  --gradient-gold: linear-gradient(135deg, rgba(194,168,120,0.2), rgba(194,168,120,0));
+  --z-fixed: 50;
+  --z-modal: 100;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  --transition-smooth: 0.3s ease;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.06em;
+  --shadow-glow: 0 0 30px rgba(194,168,120,0.15);
+  --color-border-strong: #444444;
+  --color-overlay: rgba(0,0,0,0.6);
+}
+
+/* ===== INTERACTIVE CURSOR ===== */
+.interactive-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
+
+  .cursor-dot,
+  .cursor-outline {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transition: all 0.15s ease;
+  }
+
+  .cursor-dot {
+    background: var(--color-accent);
+    transform-origin: center;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .cursor-outline {
+    border: 1px solid var(--color-accent);
+    background: transparent;
+    transform-origin: center;
+    z-index: 1;
+    opacity: 0;
+  }
+
+  &.active {
+    .cursor-dot,
+    .cursor-outline {
+      opacity: 1;
+    }
+  }
+
+  &.hovering {
+    .cursor-dot {
+      transform: scale(2);
+      background: rgba(var(--color-accent-rgb), 0.8);
+    }
+
+    .cursor-outline {
+      transform: scale(3);
+      border-color: rgba(var(--color-accent-rgb), 0.4);
+    }
+  }
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .interactive-cursor {
+    display: none;
+  }
+}
+
+/* ===== DYNAMIC MARQUEE ===== */
+.dynamic-marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+  &.static {
+    .marquee-content {
+      animation: none;
+      display: flex;
+      justify-content: center;
+      gap: var(--space-l);
+      padding: var(--space-m) 0;
+    }
+  }
+
+  .marquee-track {
+    display: flex;
+    width: 100%;
+  }
+
+  .marquee-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+    padding: var(--space-m) 0;
+    white-space: nowrap;
+    will-change: transform;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    font-size: var(--step-0);
+    color: var(--color-text);
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--color-accent);
+      transform: translateY(-2px);
+    }
+
+    span {
+      font-weight: 500;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+    }
+  }
+
+  .marquee-logo {
+    height: 2rem;
+    width: auto;
+    filter: brightness(0.7);
+    transition: all 0.3s ease;
+
+    &:hover {
+      filter: brightness(1);
+    }
+  }
+
+  .marquee-quote {
+    font-style: italic;
+    max-width: 400px;
+    font-size: var(--step--1);
+
+    cite {
+      display: block;
+      font-style: normal;
+      font-size: var(--step--2);
+      color: var(--color-text-muted);
+      margin-top: var(--space-xs);
+    }
+  }
+
+  /* Fade edges */
+  .marquee-fade {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-fade-left {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--color-surface) 0%,
+      rgba(var(--color-surface-rgb), 0.8) 50%,
+      transparent 100%
+    );
+  }
+
+  .marquee-fade-right {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      var(--color-surface) 0%,
+      rgba(var(--color-surface-rgb), 0.8) 50%,
+      transparent 100%
+    );
+  }
+
+  &.paused .marquee-content {
+    animation-play-state: paused;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dynamic-marquee {
+    .marquee-item {
+      font-size: var(--step--1);
+    }
+
+    .marquee-logo {
+      height: 1.5rem;
+    }
+  }
+}
+
+/* ===== IMAGE HOTSPOTS ===== */
+.image-hotspots {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+
+  .hotspots-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease;
+  }
+
+  .hotspot-dot {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+
+    .hotspot-pulse,
+    .hotspot-inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hotspot-inner {
+      width: 12px;
+      height: 12px;
+      background: var(--color-accent);
+      z-index: 2;
+      transition: all 0.3s ease;
+    }
+
+    .hotspot-pulse {
+      width: 24px;
+      height: 24px;
+      background: rgba(var(--color-accent-rgb), 0.3);
+      z-index: 1;
+      animation: hotspot-pulse 2s infinite ease-in-out;
+    }
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+
+      .hotspot-inner {
+        background: var(--color-background);
+        border: 2px solid var(--color-accent);
+      }
+
+      .hotspot-pulse {
+        animation-play-state: paused;
+        transform: translate(-50%, -50%) scale(1.5);
+        background: rgba(var(--color-accent-rgb), 0.6);
+      }
+    }
+
+    &.active {
+      transform: translate(-50%, -50%) scale(1.3);
+
+      .hotspot-inner {
+        background: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.4);
+      }
+    }
+  }
+
+  .hotspot-tooltip {
+    position: absolute;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-s);
+    max-width: 250px;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: tooltip-fade-in 0.2s ease forwards;
+    pointer-events: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+    .tooltip-title {
+      font-size: var(--step-0);
+      font-weight: 600;
+      color: var(--color-heading);
+      margin: 0 0 var(--space-xs) 0;
+    }
+
+    .tooltip-description {
+      font-size: var(--step--1);
+      color: var(--color-text);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 20px;
+      width: 12px;
+      height: 12px;
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+/* Hotspot Modal */
+.hotspot-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: modal-fade-in 0.3s ease forwards;
+  backdrop-filter: blur(4px);
+}
+
+.hotspot-modal {
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-l);
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 600px;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.9) translateY(20px);
+  animation: modal-scale-in 0.3s ease forwards;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.modal-content {
+  .modal-title {
+    font-size: var(--text-2xl);
+    color: var(--color-heading);
+    margin: 0 0 var(--space-s) 0;
+  }
+
+  .modal-description {
+    color: var(--color-text);
+    margin: 0 0 var(--space-l) 0;
+  }
+
+  .modal-details {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-m);
+    margin-bottom: var(--space-l);
+
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-xs) 0;
+      font-size: var(--step--1);
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      strong {
+        color: var(--color-heading);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .modal-image {
+    .detail-image {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      object-fit: cover;
+    }
+  }
+}
+
+/* Animations */
+@keyframes hotspot-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hotspot-pulse {
+    animation: none;
+  }
+
+  .hotspot-dot,
+  .hotspot-tooltip,
+  .hotspot-modal {
+    animation: none;
+    transition: none;
+  }
+
+  .dynamic-marquee .marquee-content {
+    animation: none;
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface-rgb: 33, 33, 33;
+    --color-accent-rgb: 212, 175, 55;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .hotspot-modal {
+    margin: var(--space-m);
+    padding: var(--space-m);
+    width: auto;
+    max-width: none;
+  }
+
+  .image-hotspots .hotspot-dot {
+    width: 32px;
+    height: 32px;
+
+    .hotspot-inner {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hotspot-pulse {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

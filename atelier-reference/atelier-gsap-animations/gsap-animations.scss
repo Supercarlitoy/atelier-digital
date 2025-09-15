@@ -1,0 +1,246 @@
+
+// GSAP Animation Styles
+// Supporting styles for the GSAP-powered animation system
+
+// Animation foundation styles
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+// Text animation styles
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.line {
+  overflow: hidden;
+  
+  span {
+    display: inline-block;
+  }
+}
+
+.char {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+
+// Animation performance optimizations
+.animated-element {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+// Smooth scrolling styles
+html {
+  scroll-behavior: auto; // Lenis will handle smooth scrolling
+}
+
+// Parallax container styles
+.parallax-container {
+  overflow: hidden;
+  will-change: transform;
+  
+  > * {
+    will-change: transform;
+  }
+}
+
+// Enhanced hero styles for animations
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  &__background {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(25, 25, 25, 0.7) 0%,
+      rgba(25, 25, 25, 0.4) 50%,
+      rgba(25, 25, 25, 0.6) 100%
+    );
+    z-index: 1;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  
+  &__subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// Card hover animations support
+.animated-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+// Button animation styles
+.animated-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+// Section spacing with animation support
+.section {
+  padding: 4rem 0;
+  position: relative;
+  
+  &.surface-elevated {
+    background-color: var(--surface-elevated);
+  }
+  
+  @media (min-width: 768px) {
+    padding: 6rem 0;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 8rem 0;
+  }
+}
+
+// Grid animation support
+.staggered-grid {
+  > * {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  
+  &.animated > * {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Marquee enhancements
+.client-marquee,
+.testimonial-marquee {
+  .marquee-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Counter animation styles
+.animated-counter {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+// Responsive animation adjustments
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .hero__overlay {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Print styles
+@media print {
+  .animated-element,
+  .parallax-container {
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+// Focus styles for accessibility
+.animated-button:focus,
+.animated-card:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+// Loading states
+.gsap-loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gsap-loaded {
+  opacity: 1;
+  pointer-events: auto;
+}

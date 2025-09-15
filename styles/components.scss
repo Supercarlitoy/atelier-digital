@@ -219,3 +219,182 @@
     }
   }
 }
+
+/* Phase 3B component styles: project grid, service cards, team cards, testimonials, stats, skeleton */
+/* Project Grid */
+.project-grid-wrapper {
+  margin-top: var(--space-2xl);
+
+  .project-filter {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-base);
+    margin-bottom: var(--space-xl);
+
+    .filter-btn {
+      padding: var(--space-sm) var(--space-lg);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
+      color: var(--color-heading);
+      border-radius: var(--radius-base);
+      transition: all var(--transition-base);
+
+      &.is-active,
+      &:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+        transform: translateY(-1px);
+      }
+    }
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+    transition: opacity var(--transition-base);
+
+    &.is-loading { opacity: 0.6; }
+  }
+
+  .project-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+    transition: all var(--transition-base);
+
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
+
+    &__image { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+
+    &__overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+      opacity: 0; transition: opacity var(--transition-base);
+    }
+
+    &:hover .project-card__overlay { opacity: 1; }
+
+    &__content { padding: var(--space-lg); }
+
+    &__meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-sm); }
+
+    &__category { color: var(--color-primary); font-weight: var(--font-weight-medium); }
+
+    &__tags { display: flex; gap: var(--space-xs); }
+
+    .project-tag { padding: 2px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-base); color: var(--color-text); font-size: var(--text-sm); }
+
+    &__title { color: var(--color-heading); font-size: var(--text-lg); margin-bottom: var(--space-xs); }
+
+    &__description { color: var(--color-text); }
+  }
+}
+
+/* Service Cards */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-xl);
+
+  .service-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    padding: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+
+    &:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); border-color: var(--color-primary); }
+
+    &__icon { font-size: 2rem; margin-bottom: var(--space-base); color: var(--color-text); transition: all var(--transition-base); }
+    &:hover &__icon { color: var(--color-primary); transform: scale(1.05); }
+
+    &__title { font-size: var(--text-xl); color: var(--color-heading); margin-bottom: var(--space-sm); }
+    &__description { color: var(--color-text); margin-bottom: var(--space-lg); }
+
+    &__features { list-style: none; margin: 0 0 var(--space-lg) 0; padding: 0; }
+    .service-feature { display: flex; gap: var(--space-sm); color: var(--color-text); margin-bottom: var(--space-sm); }
+    .feature-icon { color: var(--color-primary); font-weight: var(--font-weight-bold); }
+
+    &__footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--color-border); padding-top: var(--space-base); }
+    &__price { color: var(--color-primary); font-weight: var(--font-weight-bold); }
+  }
+}
+
+/* Team Cards */
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+
+  .team-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-base);
+    overflow: hidden;
+    transition: transform var(--transition-base);
+
+    &:hover { transform: translateY(-4px); }
+
+    &__image { position: relative; aspect-ratio: 16 / 12; }
+    &__content { padding: var(--space-lg); }
+    &__name { color: var(--color-heading); font-size: var(--text-lg); }
+    &__role { color: var(--color-text); margin-bottom: var(--space-sm); }
+    &__bio { color: var(--color-text); margin-bottom: var(--space-base); }
+    &__skills { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-bottom: var(--space-base); }
+    .skill-tag { padding: 2px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-base); font-size: var(--text-sm); color: var(--color-text); }
+    &__social { display: flex; gap: var(--space-sm); }
+    .social-link { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--color-border); border-radius: var(--radius-base); color: var(--color-text); transition: all var(--transition-base); }
+    .social-link:hover { color: var(--color-primary); border-color: var(--color-primary); }
+  }
+}
+
+/* Testimonials */
+.testimonials {
+  .testimonials__container { position: relative; overflow: hidden; }
+  .testimonials__slider { display: flex; transition: transform 0.5s ease; }
+  .testimonial-slide { flex: 0 0 100%; padding: var(--space-2xl); }
+  .testimonial__content { max-width: 800px; margin: 0 auto; }
+  .testimonial__rating { color: var(--color-primary); margin-bottom: var(--space-base); }
+  .testimonial__quote { font-size: var(--text-xl); color: var(--color-heading); margin-bottom: var(--space-lg); }
+  .testimonial__author { display: flex; align-items: center; gap: var(--space-base); }
+  .testimonial__avatar { position: relative; width: 56px; height: 56px; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--color-border); }
+  .testimonial__name { color: var(--color-heading); font-weight: var(--font-weight-semibold); }
+  .testimonial__role, .testimonial__company { color: var(--color-text); }
+  .testimonials__controls { display: flex; align-items: center; justify-content: center; gap: var(--space-base); margin-top: var(--space-lg); }
+  .testimonial-btn { background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-heading); width: 40px; height: 40px; border-radius: var(--radius-base); }
+  .testimonials__dots { display: flex; gap: 6px; }
+  .dot { width: 8px; height: 8px; border-radius: var(--radius-full); background: var(--color-border); border: none; }
+  .dot.is-active { background: var(--color-primary); }
+}
+
+/* Stats Display */
+.stats-display {
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-xl); }
+  .stat-item { text-align: center; padding: var(--space-lg); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-base); }
+  .stat-value { color: var(--color-heading); font-size: var(--text-3xl); font-weight: var(--font-weight-semibold); }
+  .stat-label { color: var(--color-text); margin-top: var(--space-xs); }
+}
+
+/* Loading Skeleton */
+.skeleton { position: relative; overflow: hidden; background: var(--color-surface); border-radius: var(--radius-base); }
+.skeleton--card { height: 300px; border-radius: var(--radius-base); }
+.skeleton--text { height: 20px; margin-bottom: var(--space-sm); }
+.skeleton--avatar { width: 60px; height: 60px; border-radius: var(--radius-full); }
+.skeleton--button { height: 44px; width: 120px; border-radius: var(--radius-base); }
+.skeleton__shimmer { position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); animation: shimmer 1.5s infinite; }
+
+@keyframes shimmer { 0% { left: -100%; } 100% { left: 100%; } }
+
+/* Responsive for new components */
+@media (max-width: 1024px) { .stats-display .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) {
+  .project-grid { grid-template-columns: 1fr !important; }
+  .service-cards { grid-template-columns: 1fr; }
+  .team-cards { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .testimonials .testimonial-slide { padding: var(--space-xl); }
+}
+@media (max-width: 480px) { .stats-display .stats-grid { grid-template-columns: 1fr; } }

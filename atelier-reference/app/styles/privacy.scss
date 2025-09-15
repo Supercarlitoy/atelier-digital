@@ -1,0 +1,107 @@
+
+/**
+ * Privacy Policy Page Styles
+ * Supporting Phase 3A Cookie Consent functionality
+ * Part of Atelier Agency Theme - Premium Digital Product
+ */
+
+.page-privacy {
+  padding-top: var(--space-3xl);
+}
+
+.hero-section--privacy {
+  text-align: left;
+  padding-bottom: var(--space-2xl);
+  
+  .hero-section__title {
+    margin: 0;
+  }
+  
+  .hero-section__subtitle {
+    font-size: var(--step-1);
+    max-width: 600px;
+  }
+}
+
+.privacy-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.privacy-section {
+  display: flex;
+  gap: var(--space-l);
+  margin-bottom: var(--space-3xl);
+  
+  &__icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-surface-light);
+  }
+  
+  &__content {
+    flex: 1;
+    
+    h2 {
+      font-size: var(--step-3);
+      margin-bottom: var(--space-m);
+      color: var(--color-heading);
+    }
+    
+    h3 {
+      font-size: var(--step-1);
+      margin: var(--space-l) 0 var(--space-s) 0;
+      color: var(--color-heading);
+    }
+    
+    p {
+      margin-bottom: var(--space-m);
+      line-height: 1.7;
+    }
+    
+    ul {
+      margin: var(--space-m) 0;
+      padding-left: var(--space-l);
+      
+      li {
+        margin-bottom: var(--space-s);
+        line-height: 1.6;
+        
+        strong {
+          color: var(--color-heading);
+        }
+      }
+    }
+  }
+  
+  &__text {
+    color: var(--color-text);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .privacy-section {
+    flex-direction: column;
+    gap: var(--space-m);
+    
+    &__icon {
+      align-self: flex-start;
+    }
+  }
+}
+
+/* Dark/Light theme support for privacy page */
+:root.light,
+[data-theme="light"] {
+  .privacy-section__icon {
+    background: var(--theme-surface);
+    border-color: var(--theme-surface-light);
+  }
+}

@@ -1,0 +1,119 @@
+// GSAP Animation Styles
+// Supporting styles for the GSAP-powered animation system
+
+// Animation foundation styles
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+// Text animation styles
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.line {
+  overflow: hidden;
+  
+  span {
+    display: inline-block;
+  }
+}
+
+.char {
+  display: inline-block;
+  transform-style: preserve-3d;
+}
+
+// Animation performance optimizations
+.animated-element {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+// Smooth scrolling styles
+html {
+  scroll-behavior: auto; // Lenis will handle smooth scrolling
+}
+
+// Parallax container styles
+.parallax-container {
+  overflow: hidden;
+  will-change: transform;
+  
+  > * {
+    will-change: transform;
+  }
+}
+
+// Enhanced hero styles for animations (opt-in wrapper to avoid global override)
+.gsap-hero .hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  
+  &__background {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    z-index: 0;
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(25, 25, 25, 0.7) 0%,
+      rgba(25, 25, 25, 0.4) 50%,
+      rgba(25, 25, 25, 0.6) 100%
+    );
+    z-index: 1;
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  &__title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  
+  &__subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// Card hover animations support

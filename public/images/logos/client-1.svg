@@ -1,0 +1,12 @@
+<svg viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="currentColor" stroke-width="1.5">
+    <!-- Geometric logo mark -->
+    <rect x="10" y="15" width="12" height="12" />
+    <rect x="24" y="15" width="12" height="12" />
+    <rect x="10" y="29" width="12" height="12" />
+    <rect x="24" y="29" width="12" height="12" />
+    <line x1="16" y1="21" x2="30" y2="35" />
+    <line x1="30" y1="21" x2="16" y2="35" />
+  </g>
+  <text x="50" y="35" font-family="sans-serif" font-size="16" font-weight="300" fill="currentColor">TechCorp Solutions</text>
+</svg>
