@@ -44,12 +44,25 @@
 
 ## 📋 Environment Variables
 
+### IMPORTANT: Production-required variables
+The following variables must be set in Vercel (Production) or GitHub Actions for the build/runtime to succeed:
+
+- `NEXTAUTH_SECRET` - NextAuth secret (use `openssl rand -base64 32`)
+- `NEXTAUTH_URL` - Your production URL (e.g. `https://atelierdigital.online`)
+- `DATABASE_URL` - Production database connection string (Postgres recommended)
+- `DATABASE_PROVIDER` - Prisma provider string (`postgresql` in prod, `sqlite` locally)
+
+If these are missing, builds may succeed locally but fail on Vercel/GitHub due to missing secrets or an invalid database provider.
+
+Note: Prisma's `provider` must be a literal in `schema.prisma` (Prisma restriction). For production you should either update `provider = "postgresql"` in the deployed schema or maintain a separate `schema.prod.prisma` that uses Postgres. The build will fail if the schema references SQLite but your DATABASE_URL points to Postgres unless the schema matches the provider.
+
 ### Required Variables
 | Variable | Description | Example |
 |----------|-------------|----------|
 | `NEXTAUTH_SECRET` | NextAuth.js secret key | `openssl rand -base64 32` |
 | `NEXTAUTH_URL` | Production URL | `https://atelierdigital.online` |
 | `DATABASE_URL` | Database connection | `postgresql://user:pass@host:5432/db` |
+| `DATABASE_PROVIDER` | Prisma provider | `postgresql` or `sqlite` |
 
 ### Optional Variables
 | Variable | Description | Default |

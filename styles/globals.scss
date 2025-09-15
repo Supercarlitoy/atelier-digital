@@ -1,18 +1,81 @@
 
 // Design System - CSS Variables
 :root {
-  // Quarried Stone Palette
-  --color-background: #191919;
-  --color-text: #A3A3A3;
-  --color-heading: #E5E5E5;
-  --color-primary: #C2A878;
-  --color-white: #FFFFFF;
+  // Dark Theme (Default)
+  --color-background: #0a0a0a;
+  --color-text: #e4e4e7;
+  --color-heading: #fafafa;
+  --color-primary: #d4af37;
+  --color-white: #ffffff;
   --color-black: #000000;
   
-  // Semantic Colors
-  --color-surface: #222222;
-  --color-border: #333333;
-  --color-muted: #666666;
+  // Semantic Colors - Dark
+  --color-surface: #171717;
+  --color-border: #404040;
+  --color-muted: #a1a1aa;
+  --color-surface-light: #262626;
+  --color-text-muted: #71717a;
+  
+  // Shadcn/UI Variables - Dark
+  --background: 10 10 10;
+  --foreground: 250 250 250;
+  --card: 23 23 23;
+  --card-foreground: 250 250 250;
+  --popover: 23 23 23;
+  --popover-foreground: 250 250 250;
+  --primary: 212 175 55;
+  --primary-foreground: 10 10 10;
+  --secondary: 39 39 42;
+  --secondary-foreground: 250 250 250;
+  --muted: 39 39 42;
+  --muted-foreground: 161 161 170;
+  --accent: 39 39 42;
+  --accent-foreground: 250 250 250;
+  --destructive: 239 68 68;
+  --destructive-foreground: 250 250 250;
+  --border: 64 64 64;
+  --input: 64 64 64;
+  --ring: 212 175 55;
+  --radius: 0.5rem;
+}
+
+// Light Theme
+:root.light,
+[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-text: #374151;
+  --color-heading: #111827;
+  --color-primary: #d4af37;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  // Semantic Colors - Light
+  --color-surface: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-muted: #6b7280;
+  --color-surface-light: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  
+  // Shadcn/UI Variables - Light
+  --background: 255 255 255;
+  --foreground: 17 24 39;
+  --card: 255 255 255;
+  --card-foreground: 17 24 39;
+  --popover: 255 255 255;
+  --popover-foreground: 17 24 39;
+  --primary: 212 175 55;
+  --primary-foreground: 255 255 255;
+  --secondary: 243 244 246;
+  --secondary-foreground: 17 24 39;
+  --muted: 243 244 246;
+  --muted-foreground: 107 114 128;
+  --accent: 243 244 246;
+  --accent-foreground: 17 24 39;
+  --destructive: 239 68 68;
+  --destructive-foreground: 255 255 255;
+  --border: 229 231 235;
+  --input: 229 231 235;
+  --ring: 212 175 55;
   
   // Fluid Typography Scale (Utopia-style clamp functions)
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);

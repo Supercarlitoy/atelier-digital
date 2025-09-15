@@ -1,7 +1,7 @@
 
 /**
  * Cookie Consent Component - Phase 3A Essential
- * GDPR/CCPA compliant with stone-textured design matching Atelier aesthetic
+ * GDPR/CCPA compliant with accessible design
  * Part of Atelier Agency Theme - Premium Digital Product
  */
 
@@ -15,8 +15,7 @@ import { CookieConsentProps } from '../../types/phase3';
 import { cn } from '../../lib/utils';
 
 /**
- * Premium Cookie Consent with Digital Stonemasonry aesthetic
- * Features: Stone texture, gold accents, smooth animations, accessibility
+ * Accessible Cookie Consent with proper contrast and focus management
  */
 export const CookieConsent: React.FC<CookieConsentProps> = ({
   config,
@@ -57,169 +56,90 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({
     <AnimatePresence>
       <motion.div
         className={cn(
-          // Base positioning and sizing
-          "fixed z-50 max-w-md p-6",
-          // Stone-textured background with premium styling
-          "bg-surface/95 backdrop-blur-md border border-surface-light",
-          "shadow-2xl shadow-black/25",
-          // Rounded corners matching design system
-          "rounded-xl",
-          // Position variants
-          consentConfig.position === 'bottom-right' && "bottom-6 right-6",
-          consentConfig.position === 'bottom-left' && "bottom-6 left-6",
-          consentConfig.position === 'top-right' && "top-6 right-6",
-          consentConfig.position === 'top-left' && "top-6 left-6",
-          // Custom classes
+          "fixed bottom-0 left-0 right-0 z-50",
+          "bg-background/95 backdrop-blur-sm",
+          "border-t border-border",
+          "p-4 md:p-6",
           className
         )}
-        initial={{ 
-          opacity: 0, 
-          scale: 0.95,
-          y: consentConfig.position?.includes('bottom') ? 20 : -20 
-        }}
-        animate={{ 
-          opacity: 1, 
-          scale: 1,
-          y: 0 
-        }}
-        exit={{ 
-          opacity: 0, 
-          scale: 0.95,
-          y: consentConfig.position?.includes('bottom') ? 20 : -20 
-        }}
-        transition={{
-          type: "spring",
-          duration: 0.5,
-          ease: "easeOut"
-        }}
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 100, opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         role="dialog"
         aria-labelledby="cookie-consent-title"
         aria-describedby="cookie-consent-description"
       >
-        {/* Close button for accessibility */}
-        <button
-          onClick={handleClose}
-          className={cn(
-            "absolute top-4 right-4 p-1",
-            "text-text-secondary hover:text-text-primary",
-            "transition-colors duration-200",
-            "rounded-md hover:bg-surface-light/50"
-          )}
-          aria-label="Close cookie consent"
-        >
-          <X size={16} />
-        </button>
-
-        {/* Header with icon */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className={cn(
-            "flex-shrink-0 w-8 h-8 rounded-lg",
-            "bg-primary/10 flex items-center justify-center"
-          )}>
-            <Cookie size={16} className="text-primary" />
-          </div>
-          <h3 
-            id="cookie-consent-title"
-            className="text-lg font-semibold text-heading leading-tight"
-          >
-            Cookie Preferences
-          </h3>
-        </div>
-
-        {/* Content */}
-        <div 
-          id="cookie-consent-description"
-          className="space-y-4 mb-6"
-        >
-          <p className="text-sm text-text leading-relaxed">
-            We use cookies to enhance your browsing experience, serve personalized content, 
-            and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
-          </p>
-
-          {/* Trust indicator */}
-          <div className="flex items-center gap-2 text-xs text-text-secondary">
-            <Shield size={12} className="text-primary" />
-            <span>GDPR & CCPA Compliant</span>
-          </div>
-        </div>
-
-        {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          {/* Primary Accept Button - Gold accent */}
-          <button
-            onClick={handleAccept}
-            className={cn(
-              // Base button styles
-              "flex-1 px-4 py-2.5 rounded-lg font-medium text-sm",
-              "transition-all duration-200",
-              // Premium gold styling
-              "bg-primary text-black",
-              "hover:bg-primary/90 hover:scale-[1.02]",
-              "focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2",
-              "focus:ring-offset-surface",
-              // Premium shadow
-              "shadow-lg shadow-primary/25"
-            )}
-          >
-            Accept All
-          </button>
-
-          {/* Secondary Decline Button */}
-          {consentConfig.showDeclineButton && (
-            <button
-              onClick={handleDecline}
-              className={cn(
-                // Base button styles
-                "px-4 py-2.5 rounded-lg font-medium text-sm",
-                "transition-all duration-200",
-                // Secondary styling
-                "border border-surface-light text-text",
-                "hover:bg-surface-light/50 hover:scale-[1.02]",
-                "focus:outline-none focus:ring-2 focus:ring-text/20 focus:ring-offset-2",
-                "focus:ring-offset-surface"
-              )}
-            >
-              Necessary Only
-            </button>
-          )}
-        </div>
-
-        {/* Optional links */}
-        {(consentConfig.privacyPolicyUrl || consentConfig.cookiePolicyUrl) && (
-          <div className="flex justify-center gap-4 mt-4 pt-4 border-t border-surface-light">
-            {consentConfig.privacyPolicyUrl && (
-              <a
-                href={consentConfig.privacyPolicyUrl}
-                className="text-xs text-text-secondary hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
+        <div className="container mx-auto max-w-4xl">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <div className="flex items-start gap-3 flex-1">
+              <div className="flex-shrink-0 mt-1">
+                <Cookie className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 
+                  id="cookie-consent-title"
+                  className="text-sm font-semibold text-foreground mb-1"
+                >
+                  Cookie Preferences
+                </h3>
+                <p 
+                  id="cookie-consent-description"
+                  className="text-sm text-muted-foreground leading-relaxed"
+                >
+                  We use cookies to enhance your experience, analyze site traffic, and personalize content. 
+                  You can manage your preferences or accept all cookies.
+                </p>
+                <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
+                  <Shield className="w-3 h-3 text-primary" />
+                  <span>GDPR & CCPA Compliant</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <button
+                onClick={handleDecline}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium",
+                  "text-muted-foreground hover:text-foreground",
+                  "border border-border rounded-md",
+                  "hover:bg-muted/50 transition-colors",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2",
+                  "focus:ring-offset-background"
+                )}
               >
-                Privacy Policy
-              </a>
-            )}
-            {consentConfig.cookiePolicyUrl && (
-              <a
-                href={consentConfig.cookiePolicyUrl}
-                className="text-xs text-text-secondary hover:text-primary transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
+                Necessary Only
+              </button>
+              
+              <button
+                onClick={handleAccept}
+                className={cn(
+                  "px-4 py-2 text-sm font-medium",
+                  "bg-primary text-primary-foreground",
+                  "rounded-md hover:bg-primary/90",
+                  "transition-colors",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2",
+                  "focus:ring-offset-background"
+                )}
               >
-                Cookie Policy
-              </a>
-            )}
+                Accept All
+              </button>
+              
+              <button
+                onClick={handleClose}
+                className={cn(
+                  "p-2 text-muted-foreground hover:text-foreground",
+                  "rounded-md hover:bg-muted/50 transition-colors",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-2",
+                  "focus:ring-offset-background"
+                )}
+                aria-label="Close cookie consent"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
-        )}
-
-        {/* Subtle texture overlay for stone effect */}
-        <div className="absolute inset-0 rounded-xl opacity-5 pointer-events-none">
-          <div 
-            className="w-full h-full rounded-xl"
-            style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(194, 168, 120, 0.1) 0%, transparent 50%),
-                               radial-gradient(circle at 75% 75%, rgba(194, 168, 120, 0.1) 0%, transparent 50%)`,
-              backgroundSize: '20px 20px'
-            }}
-          />
         </div>
       </motion.div>
     </AnimatePresence>
