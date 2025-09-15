@@ -9,6 +9,7 @@ import SmoothScrollProvider from '../components/providers/SmoothScrollProvider';
 import '../styles/privacy.scss';
 import Header from '../components/layout/header';
 import Footer from '../components/layout/footer';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: 'Atelier Digital - Premium Website Blueprints',
@@ -108,15 +109,17 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <SmoothScrollProvider>
-          <Phase3Provider>
-            <Header />
-            <main className="page">
-              {children}
-            </main>
-            <Footer />
-          </Phase3Provider>
-        </SmoothScrollProvider>
+        <Providers>
+          <SmoothScrollProvider>
+            <Phase3Provider>
+              <Header />
+              <main className="page">
+                {children}
+              </main>
+              <Footer />
+            </Phase3Provider>
+          </SmoothScrollProvider>
+        </Providers>
       </body>
     </html>
   );
