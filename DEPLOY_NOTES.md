@@ -64,6 +64,20 @@ Note: Prisma's `provider` must be a literal in `schema.prisma` (Prisma restricti
 | `DATABASE_URL` | Database connection | `postgresql://user:pass@host:5432/db` |
 | `DATABASE_PROVIDER` | Prisma provider | `postgresql` or `sqlite` |
 
+### Quick Secrets Checklist (exact keys)
+When configuring GitHub Actions or Vercel, make sure these exact environment variables/secrets exist for production builds and runtime:
+
+- `DATABASE_URL` — PostgreSQL connection string (used by Prisma during `prisma generate` and runtime)
+- `NEXTAUTH_SECRET` — NextAuth secret (32+ random bytes base64)
+- `NEXTAUTH_URL` — Your production app URL (e.g., `https://atelierdigital.online`)
+
+Optional but recommended:
+
+- `GOOGLE_SITE_VERIFICATION` — Google Search Console verification
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD` — for contact form/email delivery
+
+Note: The CI workflow `CI - Build` copies `prisma/schema.prod.prisma` into `prisma/schema.prisma` before `npx prisma generate`. Ensure `DATABASE_URL` points to the Postgres service used by CI (or your managed DB) and that the credentials are valid.
+
 ### Optional Variables
 | Variable | Description | Default |
 |----------|-------------|----------|
