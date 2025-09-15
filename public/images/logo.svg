@@ -1,0 +1,35 @@
+<svg viewBox="0 0 280 60" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .icon, .wordmark { fill: currentColor; }
+    .wordmark { font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .primary { font-weight: 600; letter-spacing: -0.02em; }
+    .secondary { font-weight: 400; letter-spacing: 0.05em; opacity: 0.8; }
+  </style>
+  
+  <!-- Icon: Stylized A+D monogram with geometric precision -->
+  <g class="icon" transform="translate(0, 8)">
+    <!-- Outer frame representing craftsmanship precision -->
+    <rect x="2" y="2" width="40" height="40" rx="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    
+    <!-- A+D monogram -->
+    <g transform="translate(22, 22)">
+      <!-- Letter A (left side) -->
+      <path d="M-12 12 L-12 -8 L-8 -12 L-4 -8 L-4 -2 L-8 -2 L-8 12 Z M-12 2 L-4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      
+      <!-- Letter D (right side) -->
+      <path d="M4 12 L4 -12 L8 -12 C12 -12 16 -8 16 -4 L16 4 C16 8 12 12 8 12 Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      
+      <!-- Central connecting element -->
+      <circle cx="0" cy="0" r="1.5" fill="currentColor"/>
+    </g>
+  </g>
+  
+  <!-- Wordmark -->
+  <g class="wordmark" transform="translate(56, 0)">
+    <!-- "Atelier" - Primary -->
+    <text x="0" y="24" class="primary" font-size="18" dominant-baseline="middle">Atelier</text>
+    
+    <!-- "Digital" - Secondary -->
+    <text x="0" y="42" class="secondary" font-size="12" dominant-baseline="middle">DIGITAL</text>
+  </g>
+</svg>

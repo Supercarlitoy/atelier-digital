@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monitor frame -->
+  <rect x="8" y="12" width="48" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+  <!-- Screen content - grid layout -->
+  <rect x="12" y="16" width="16" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="32" y="16" width="16" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="12" y="28" width="36" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="12" y="36" width="24" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+  <!-- Monitor stand -->
+  <path d="M28 44 L36 44 L34 52 L30 52 Z" stroke="currentColor" stroke-width="2" fill="none"/>
+  <!-- Base -->
+  <line x1="24" y1="52" x2="40" y2="52" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg>

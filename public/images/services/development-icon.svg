@@ -1,0 +1,13 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Code brackets -->
+  <path d="M16 20 L8 28 L8 36 L16 44" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M48 20 L56 28 L56 36 L48 44" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Code lines -->
+  <path d="M24 24 L28 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 24 L40 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 32 L32 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M36 32 L44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M24 40 L36 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <!-- Cursor -->
+  <rect x="38" y="38" width="2" height="6" fill="currentColor"/>
+</svg>
