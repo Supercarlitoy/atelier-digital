@@ -112,8 +112,11 @@ export default function RootLayout({
         <Providers>
           <SmoothScrollProvider>
             <Phase3Provider>
+              <a href="#main-content" className="skip-link">
+                Skip to main content
+              </a>
               <Header />
-              <main className="page">
+              <main id="main-content" className="page">
                 {children}
               </main>
               <Footer />

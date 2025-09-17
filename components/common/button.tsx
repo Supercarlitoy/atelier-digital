@@ -9,6 +9,9 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  'aria-label'?: string;
+  'aria-describedby'?: string;
+  disabled?: boolean;
 }
 
 const Button = ({ 
@@ -17,13 +20,21 @@ const Button = ({
   variant = 'primary', 
   onClick, 
   className = '', 
-  type = 'button' 
+  type = 'button',
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
+  disabled = false
 }: ButtonProps) => {
-  const baseClass = `btn btn--${variant} ${className}`;
+  const baseClass = `btn btn--${variant} ${className} ${disabled ? 'btn--disabled' : ''}`;
 
-  if (href) {
+  if (href && !disabled) {
     return (
-      <Link href={href} className={baseClass}>
+      <Link 
+        href={href} 
+        className={baseClass}
+        aria-label={ariaLabel}
+        aria-describedby={ariaDescribedBy}
+      >
         {children}
       </Link>
     );
@@ -34,6 +45,9 @@ const Button = ({
       type={type} 
       className={baseClass} 
       onClick={onClick}
+      aria-label={ariaLabel}
+      aria-describedby={ariaDescribedBy}
+      disabled={disabled}
     >
       {children}
     </button>

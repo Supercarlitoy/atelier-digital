@@ -1,0 +1,49 @@
+{
+  "start": [
+    "/",
+    "/about",
+    "/work",
+    "/contact",
+    "/privacy",
+    "/auth/signin",
+    "/auth/signup"
+  ],
+  "count": 7,
+  "nodes": [
+    {
+      "url": "/",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/about",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/work",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/contact",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/privacy",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/auth/signin",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    },
+    {
+      "url": "/auth/signup",
+      "status": 200,
+      "title": "Atelier Digital - Premium Website Blueprints"
+    }
+  ]
+}

@@ -205,6 +205,27 @@ a {
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
+  min-height: 44px; /* Minimum touch target size */
+  min-width: 44px;
+  border-radius: 4px;
+  
+  /* Enhanced focus states for accessibility */
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+  }
   
   &--primary {
     background-color: var(--color-primary);
@@ -215,28 +236,105 @@ a {
       background-color: var(--color-heading);
       transform: translateY(-1px);
     }
+    
+    &:active {
+      transform: translateY(0);
+    }
   }
   
   &--text {
     background: transparent;
     color: var(--color-heading);
-    padding: var(--space-sm) 0;
+    padding: var(--space-sm) var(--space-base);
     position: relative;
     
     &::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 0;
+      left: var(--space-base);
       width: 0;
-      height: 1px;
+      height: 2px;
       background-color: var(--color-primary);
       transition: width var(--transition-base);
     }
     
     &:hover::after {
-      width: 100%;
+      width: calc(100% - calc(var(--space-base) * 2));
     }
+  }
+  
+  /* Disabled state */
+  &--disabled,
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+/* Enhanced accessibility styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: var(--color-black);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  
+  &:focus {
+    top: 6px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn {
+    border: 2px solid currentColor;
+    
+    &:focus {
+      outline: 3px solid;
+      outline-offset: 3px;
+    }
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+  
+  .fade-in-up {
+    animation: none;
+  }
+}
+
+/* Focus management for interactive elements */
+a, button, input, textarea, select, [tabindex]:not([tabindex="-1"]) {
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 

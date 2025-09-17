@@ -70,30 +70,37 @@ const testimonials = [
 
 export default function Home() {
   return (
-    <div className="hero" style={{
-      backgroundImage: 'url(/images/hero-bg.jpg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}>
-      <PageTransitionMount type="architecturalReveal" />
-      <AnimatedSection className="container" animation="fadeInUp">
-        <h1 className="hero__title">
-          Digital Stonemasonry for the Modern Web
-        </h1>
-        <p className="hero__subtitle">
-          Premium website blueprints that bridge the gap between cheap templates and expensive custom builds. 
-          Architectural precision meets digital craftsmanship.
-        </p>
-        <div className="hero__actions">
-          <Button href="/work" variant="primary">
-            View Our Work
-          </Button>
-          <Button href="/about" variant="text">
-            Learn More
-          </Button>
-        </div>
-      </AnimatedSection>
+    <>
+      {/* Hero Section */}
+      <section 
+        className="hero" 
+        style={{
+          backgroundImage: 'url(/images/hero-bg.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+        aria-label="Hero section with main heading and call-to-action buttons"
+      >
+        <PageTransitionMount type="architecturalReveal" />
+        <AnimatedSection className="container" animation="fadeInUp">
+          <h1 className="hero__title">
+            Digital Stonemasonry for the Modern Web
+          </h1>
+          <p className="hero__subtitle">
+            Premium website blueprints that bridge the gap between cheap templates and expensive custom builds. 
+            Architectural precision meets digital craftsmanship.
+          </p>
+          <div className="hero__actions">
+            <Button href="/work" variant="primary" aria-label="View our portfolio and previous work">
+              View Our Work
+            </Button>
+            <Button href="/about" variant="text" aria-label="Learn more about Atelier Digital">
+              Learn More
+            </Button>
+          </div>
+        </AnimatedSection>
+      </section>
       {/* Stats Section */}
       <section className="section">
         <AnimatedSection className="container" animation="fadeInUp">
@@ -191,6 +198,6 @@ export default function Home() {
           <Testimonials testimonials={testimonials} />
         </AnimatedSection>
       </section>
-    </div>
+    </>
   );
 }
